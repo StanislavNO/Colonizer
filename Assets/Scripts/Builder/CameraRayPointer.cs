@@ -8,7 +8,7 @@ namespace Assets.Scripts
         private Ray _ray;
         private RaycastHit _hit;
 
-        public Vector3 point { get; private set; }
+        public Vector3 Point { get; private set; }
 
         private void Update()
         {
@@ -16,7 +16,7 @@ namespace Assets.Scripts
             Debug.DrawRay(_ray.origin, _ray.direction * 100f, Color.gray);
 
             if (Physics.Raycast(_ray, out _hit))
-                point = _hit.point;
+                Point = _hit.point;
         }
     }
 }

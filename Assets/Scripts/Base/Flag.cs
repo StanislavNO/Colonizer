@@ -14,15 +14,31 @@ namespace Assets.Scripts
 
         public bool IsActivated => _isActivated;
 
-        private void Start()
+        private void FixedUpdate()
+        {
+            //Debug.Log(_isActivated);
+        }
+
+        //private void Start()
+        //{
+        //    _pattern = Instantiate(_prefab);
+
+        //    _pattern.GetComponent<ColorChanger>().SetFlag(this);
+        //    _pattern.transform.position = transform.position;
+        //}
+
+        //!!
+        private void OnEnable()
         {
             _pattern = Instantiate(_prefab);
 
             _pattern.GetComponent<ColorChanger>().SetFlag(this);
             _pattern.transform.position = transform.position;
+
+            _isActivated = false;
         }
 
-        public void OnPointerClick(PointerEventData evntData)
+        public void OnPointerClick(PointerEventData eventData)
         {
             _builder.ChangeTargetBase(this);
         }
@@ -34,6 +50,7 @@ namespace Assets.Scripts
 
         public void Deactivate()
         {
+            
             _isActivated = false;
         }
 

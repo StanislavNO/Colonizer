@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,9 +8,8 @@ namespace Assets.Scripts
 {
     public class Builder : MonoBehaviour
     {
-        [SerializeField] private Flag _startFlag;
-        [SerializeField] private Base _base;
         [SerializeField] private CameraRayPointer _cameraRay;
+        [SerializeField] private Flag _startFlag;
         [SerializeField] private Pattern _prefab;
 
         private List<Flag> _flags = new();
@@ -24,15 +24,22 @@ namespace Assets.Scripts
 
         private void LateUpdate()
         {
-            if(TryFindActiveFlag(out Flag flag))
+            if (TryFindActiveFlag(out Flag flag))
             {
-                _pattern.transform.position = _cameraRay.point;
+                _pattern.transform.position = _cameraRay.Point;
 
-                if(Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     ChangeTargetBase(flag, false);
+                    CreateBase(new Vector3(_pattern.transform.position.x, _startFlag.transform.position.y, _pattern.transform.position.z));
                 }
             }
+        }
+
+        public void CreateBase(Vector3 position)
+        {
+            Flag newFlag = Instantiate(_startFlag, position, Quaternion.identity);
+            _flags.Add(newFlag);
         }
 
         public void ChangeTargetBase(Flag newFlag, bool isActivated = true)

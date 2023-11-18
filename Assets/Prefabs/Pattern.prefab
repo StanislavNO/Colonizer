@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894d32c8239061a4c8982b62c17fe275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _flag: {fileID: 0}
 --- !u!114 &-4021125539682370977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047678ef9faf8fe4dba6e71030fc369f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flag: {fileID: 0}
+  _flag: {fileID: 8552992999805877055, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
   _activeColor: {r: 0.7618122, g: 0.3061765, b: 0.9716981, a: 0}

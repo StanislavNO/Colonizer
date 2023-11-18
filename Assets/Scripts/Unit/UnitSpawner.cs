@@ -8,13 +8,18 @@ namespace Assets.Scripts
         [SerializeField] private UnitParking _unitParking;
 
         [SerializeField] private Collector _prefab;
-        [SerializeField] private int _startNumber;
+        [SerializeField] private int _startUnits;
+
+        private int _countUnitsInStartBase = 0;
 
         private void Start()
         {
-            for (int i = 0; i < _startNumber; i++)
+            if (_unitParking.NumberUnits == _countUnitsInStartBase)
             {
-                CreateUnit();
+                for (int i = 0; i < _startUnits; i++)
+                {
+                    CreateUnit();
+                }
             }
         }
 

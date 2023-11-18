@@ -18,8 +18,16 @@ namespace Assets.Scripts
             _startColor = _renderer.material.color;
         }
 
+        //private void OnEnable()
+        //{
+        //    _renderer = GetComponent<Renderer>();
+        //    _startColor = _renderer.material.color;
+        //}
+
         private void Update()
         {
+            Debug.Log($"{transform}  {_flag.IsActivated }");
+
             TryChangeColor();
         }
 
