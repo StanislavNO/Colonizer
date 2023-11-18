@@ -31,11 +31,11 @@ namespace Assets.Scripts
 
         private void TryChangeColor()
         {
-            if (_flag.IsActive && _renderer.material.color == _startColor)
+            if (_flag.IsActivated && _renderer.material.color == _startColor)
             {
                 _renderer.material.color = _activeColor;
             }
-            else if (_flag.IsActive == false && _renderer.material.color == _activeColor)
+            else if (_flag.IsActivated == false && _renderer.material.color == _activeColor)
             {
                 _renderer.material.color = _startColor;
             }

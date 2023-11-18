@@ -10,9 +10,9 @@ namespace Assets.Scripts
         [SerializeField] private Pattern _prefab;
 
         private Pattern _pattern;
-        private bool _isActive;
+        private bool _isActivated;
 
-        public bool IsActive => _isActive;
+        public bool IsActivated => _isActivated;
 
         private void Start()
         {
@@ -29,12 +29,12 @@ namespace Assets.Scripts
 
         public void Activate()
         {
-            _isActive = true;
+            _isActivated = true;
         }
 
         public void Deactivate()
         {
-            _isActive = false;
+            _isActivated = false;
         }
 
         public Pattern GetPattern()

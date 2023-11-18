@@ -52,7 +52,7 @@ namespace Assets.Scripts
         {
             foreach (Flag flag in _flags)
             {
-                if (flag.IsActive)
+                if (flag.IsActivated)
                 {
                     activeFlag = flag;
                     return true;
