@@ -8,20 +8,6 @@ namespace Assets.Scripts
         [SerializeField] private UnitParking _unitParking;
 
         [SerializeField] private Collector _prefab;
-        [SerializeField] private int _startUnits;
-
-        private int _countUnitsInStartBase = 0;
-
-        private void Start()
-        {
-            if (_unitParking.NumberUnits == _countUnitsInStartBase)
-            {
-                for (int i = 0; i < _startUnits; i++)
-                {
-                    CreateUnit();
-                }
-            }
-        }
 
         public void CreateUnit()
         {
@@ -33,7 +19,7 @@ namespace Assets.Scripts
             unit.GetComponent<TargetMover>()
                 .Init(_unitParking.transform.position);
 
-            _unitParking.AddUnit(unit);
+            _unitParking.SetUnit(unit);
         }
     }
 }

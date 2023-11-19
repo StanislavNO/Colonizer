@@ -9,9 +9,13 @@ namespace Assets.Scripts
         [SerializeField] private UnityEvent _unitPriceAchieved;
         [SerializeField] private Transform _storageBox;
 
+        readonly private int _unitPrice = 3;
+        readonly private int _basePrice = 5;
+        private int _currentPrice;
+
         private Queue<Resource> _resources = new();
 
-        readonly private int _unitPrice = 3;
+        public bool IsAccumulateBase { get; private set; }
 
         public int Resource => _resources.Count;
 
@@ -26,16 +30,31 @@ namespace Assets.Scripts
                 }
             }
 
-            TryBayUnit();
+            TryBayPrice();
         }
 
-        private void TryBayUnit()
+        public void SaveUpForBase()
         {
-            if (_resources.Count >= _unitPrice)
-            {
-                DeleteResource(_unitPrice);
+            IsAccumulateBase = true;
+        }
 
-                _unitPriceAchieved.Invoke();
+        private void TryBayPrice()
+        {
+            if (IsAccumulateBase)
+                _currentPrice = _basePrice;
+            else
+                _currentPrice = _unitPrice;
+
+            if (_resources.Count >= _currentPrice)
+            {
+                DeleteResource(_currentPrice);
+
+                if (_currentPrice == _unitPrice)
+                    _unitPriceAchieved.Invoke();
+                else
+                {
+                    IsAccumulateBase = false;
+                }
             }
         }
 

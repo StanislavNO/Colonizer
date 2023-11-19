@@ -112,3 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flag: {fileID: 8552992999805877055, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
   _activeColor: {r: 0.7618122, g: 0.3061765, b: 0.9716981, a: 0}
+  _startColor: {r: 0.2392157, g: 0.69803923, b: 0.36862746, a: 0}

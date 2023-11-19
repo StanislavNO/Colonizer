@@ -7,8 +7,15 @@ namespace Assets.Scripts
     public class Pattern : MonoBehaviour
     {
         [SerializeField] private Flag _flag;
+        [SerializeField] private BaseBuilder _baseBuilder;
 
-        private bool _isActivated;
+        public bool IsActivated { get; private set; }
+
+        public void Activate()
+        {
+            IsActivated = true;
+            //_baseBuilder
+        }
 
     }
 }

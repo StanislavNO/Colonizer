@@ -52,6 +52,12 @@ namespace Assets.Scripts
             }
         }
 
+        public void GoHome(Vector3 homePosition)
+        {
+            _isWorking = true;
+            _startPosition = homePosition;
+        }
+
         public void SetTarget(Transform resource)
         {
             _isWorking = true;

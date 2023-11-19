@@ -781,10 +781,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbc331814ce6da47bd25e4abd85ef48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startFlag: {fileID: 1458755659}
-  _base: {fileID: 1458755652}
   _cameraRay: {fileID: 963194231}
-  _prefab: {fileID: 0}
+  _startFlag: {fileID: 1458755659}
+  _prefab: {fileID: -9203460817601410080, guid: 3d74f5cd3f0d70945b9b536f80c7935a, type: 3}
 --- !u!1 &1293343115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1325,26 @@ PrefabInstance:
     - target: {fileID: 5384123666463571069, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622974970205161415, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _startUnits
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775520973967469733, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681462238457082611, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _startColor.b
+      value: 0.39607847
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681462238457082611, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _startColor.g
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681462238457082611, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _startColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8552992999805877055, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
       propertyPath: _builder

@@ -9,6 +9,11 @@ namespace Assets.Scripts
 
         public bool IsWorking => _mover.IsWorking;
 
+        public void ChangeHomePosition(Vector3 newHome)
+        {
+            _mover.Init(newHome);
+        }
+
         public void SetTarget(Resource resource)
         {
             resource.ActivateResource();

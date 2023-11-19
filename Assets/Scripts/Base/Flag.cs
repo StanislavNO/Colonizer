@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.Scripts
@@ -10,53 +9,29 @@ namespace Assets.Scripts
         [SerializeField] private Pattern _prefab;
 
         private Pattern _pattern;
-        private bool _isActivated;
 
-        public bool IsActivated => _isActivated;
+        public bool IsActivated { get; private set; }
 
-        private void FixedUpdate()
-        {
-            //Debug.Log(_isActivated);
-        }
-
-        //private void Start()
-        //{
-        //    _pattern = Instantiate(_prefab);
-
-        //    _pattern.GetComponent<ColorChanger>().SetFlag(this);
-        //    _pattern.transform.position = transform.position;
-        //}
-
-        //!!
-        private void OnEnable()
+        private void Awake()
         {
             _pattern = Instantiate(_prefab);
 
             _pattern.GetComponent<ColorChanger>().SetFlag(this);
             _pattern.transform.position = transform.position;
 
-            _isActivated = false;
+            IsActivated = false;
         }
 
         public void OnPointerClick(PointerEventData eventData)
-        {
-            _builder.ChangeTargetBase(this);
-        }
+            => _builder.ChangeTargetBase(this);
 
-        public void Activate()
-        {
-            _isActivated = true;
-        }
+        public void Activate() =>
+            IsActivated = true;
 
-        public void Deactivate()
-        {
-            
-            _isActivated = false;
-        }
+        public void Deactivate() =>
+            IsActivated = false;
 
-        public Pattern GetPattern()
-        {
-            return _pattern;
-        }
+        public Pattern GetPattern() =>
+            _pattern;
     }
 }

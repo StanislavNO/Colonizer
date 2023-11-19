@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -10,32 +11,21 @@ namespace Assets.Scripts
         [SerializeField] private Color _activeColor;
 
         private Renderer _renderer;
-        private Color _startColor;
+        [SerializeField] private Color _startColor;
 
         private void Awake()
         {
             _renderer = GetComponent<Renderer>();
-            _startColor = _renderer.material.color;
+            _renderer.material.color = _startColor;
         }
-
-        //private void OnEnable()
-        //{
-        //    _renderer = GetComponent<Renderer>();
-        //    _startColor = _renderer.material.color;
-        //}
 
         private void Update()
         {
-            Debug.Log($"{transform}  {_flag.IsActivated }");
-
             TryChangeColor();
         }
 
-        //!!!
-        public void SetFlag(Flag flag)
-        {
+        public void SetFlag(Flag flag) =>
             _flag = flag;
-        }
 
         private void TryChangeColor()
         {
