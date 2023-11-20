@@ -7,6 +7,7 @@ namespace Assets.Scripts
     public class Warehouse : MonoBehaviour
     {
         [SerializeField] private UnityEvent _unitPriceAchieved;
+        [SerializeField] private UnityEvent _basePriceAchieved;
         [SerializeField] private Transform _storageBox;
 
         readonly private int _unitPrice = 3;
@@ -54,6 +55,7 @@ namespace Assets.Scripts
                 else
                 {
                     IsAccumulateBase = false;
+                    _basePriceAchieved.Invoke();
                 }
             }
         }

@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using Unity.VisualScripting;
+using System.Collections;
 
 namespace Assets.Scripts
 {
@@ -20,17 +21,10 @@ namespace Assets.Scripts
 
         public Collector GetUnit()
         {
-            Debug.Log(0);
             int lastUnit = _collectors.Count - 1;
             Collector unit = _collectors[lastUnit];
 
-            _collectors.RemoveAt(_collectors.Count -1);
-            if (unit == null)
-            {
-                Debug.Log("1");
-            }
-            else
-                Debug.Log("2");
+            _collectors.RemoveAt(_collectors.Count - 1);
 
             return unit;
         }
@@ -60,6 +54,31 @@ namespace Assets.Scripts
             }
 
             return result;
+        }
+
+        public void GoUnit()
+        {
+            int lastUnit = _collectors.Count - 1;
+            Collector unit = _collectors[lastUnit];
+
+            _collectors.RemoveAt(_collectors.Count - 1);
+
+            StartCoroutine(UnitHom(unit));
+            //unit.ChangeHomePosition(GetComponent<Flag>().GetPattern().transform.position);
+        }
+
+        private IEnumerator UnitHom (Collector unit)
+        {
+            do
+            {
+                yield return new WaitForSecondsRealtime(0.2f);
+                Debug.Log(1);
+            }
+            while (unit.IsWorking == true);
+
+            unit.ChangeHomePosition(GetComponent<Flag>().GetPattern().transform.position);
+
+            
         }
     }
 }

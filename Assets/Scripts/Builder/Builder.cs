@@ -3,53 +3,66 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 namespace Assets.Scripts
 {
+    [RequireComponent(typeof(Pattern))]
     public class Builder : MonoBehaviour
     {
-        [SerializeField] private CameraRayPointer _cameraRay;
-        [SerializeField] private Flag _startFlag;
-        [SerializeField] private Pattern _prefab;
+        [SerializeField] private UnitParking _unitParking;
+        [SerializeField] private Warehouse _warehouse;
 
-        //[SerializeField] private UnitParking _unitParking;
-        //[SerializeField] private Warehouse _warehouse;
-
-        private List<Flag> _flags = new();
-
-        private Flag _currentFlag;
         private Pattern _pattern;
+        private Vector3 _startPosition;
 
-        //private bool _isActivated;
+        private bool _isActivated;
 
         private void Awake()
         {
-            _flags.Add(_startFlag);
+            _pattern = GetComponentInParent<Pattern>();
+            _startPosition = transform.position;
+            _isActivated = false;
         }
 
         private void LateUpdate()
         {
-            //if (_isActivated)
-            //{
-
-            //}
-
-            if (TryFindActiveFlag(out Flag flag))
+            if (transform.position != _startPosition)
             {
-                _pattern.transform.position = _cameraRay.Point;
-
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    ChangeTargetBase(flag, false);
-
-                    _pattern.Activate();
-
-                    //StartCoroutine(CreateBase1());
-                    //CreateBase(new Vector3(_pattern.transform.position.x, _startFlag.transform.position.y, _pattern.transform.position.z));
-                }
+                _isActivated = true;
             }
+
+            if (_isActivated)
+            {
+
+            }
+
+            //if (TryFindActiveFlag(out Flag flag))
+            //{
+            //    _pattern.transform.position = _cameraRay.Point;
+
+            //    if (Input.GetKeyDown(KeyCode.Mouse0))
+            //    {
+            //        ChangeTargetBase(flag, false);
+
+            //        _pattern.Activate();
+
+            //        //!!!
+            //        flag.GetComponent<Warehouse>().SaveUpForBase();
+
+            //        //StartCoroutine(CreateBase1());
+            //        //CreateBase(new Vector3(_pattern.transform.position.x, _startFlag.transform.position.y, _pattern.transform.position.z));
+            //    }
+            //}
         }
+
+        private void Deactivate()
+        {
+            transform.position = _startPosition;
+            _isActivated = false;
+        }
+
+        //public void AddFlag(Flag flag) =>
+        //    _flags.Add(flag); 
 
         //public void CreateBase(Vector3 position)
         //{
@@ -58,33 +71,33 @@ namespace Assets.Scripts
         //    //_isActivated = false;
         //}
 
-        public void ChangeTargetBase(Flag newFlag, bool isActivated = true)
-        {
-            _currentFlag?.Deactivate();
+        //public void ChangeTargetBase(Flag newFlag, bool isActivated = true)
+        //{
+        //    _currentFlag?.Deactivate();
 
-            if (isActivated)
-                newFlag.Activate();
-            else
-                newFlag.Deactivate();
+        //    if (isActivated)
+        //        newFlag.Activate();
+        //    else
+        //        newFlag.Deactivate();
 
-            _pattern = newFlag.GetPattern();
-            _currentFlag = newFlag;
-        }
+        //    _pattern = newFlag.GetPattern();
+        //    _currentFlag = newFlag;
+        //}
 
-        private bool TryFindActiveFlag(out Flag activeFlag)
-        {
-            foreach (Flag flag in _flags)
-            {
-                if (flag.IsActivated)
-                {
-                    activeFlag = flag;
-                    return true;
-                }
-            }
+        //private bool TryFindActiveFlag(out Flag activeFlag)
+        //{
+        //    foreach (Flag flag in _flags)
+        //    {
+        //        if (flag.IsActivated)
+        //        {
+        //            activeFlag = flag;
+        //            return true;
+        //        }
+        //    }
 
-            activeFlag = null;
-            return false;
-        }
+        //    activeFlag = null;
+        //    return false;
+        //}
 
         //private void Activate(Flag flag)
         //{

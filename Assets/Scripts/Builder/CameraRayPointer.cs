@@ -9,6 +9,7 @@ namespace Assets.Scripts
         private RaycastHit _hit;
 
         public Vector3 Point { get; private set; }
+        public Vector3 CurrencyPoint { get; private set; }
 
         private void Update()
         {
@@ -16,7 +17,18 @@ namespace Assets.Scripts
             Debug.DrawRay(_ray.origin, _ray.direction * 100f, Color.gray);
 
             if (Physics.Raycast(_ray, out _hit))
-                Point = _hit.point;
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    CurrencyPoint = _hit.point;
+
+                    if (_hit.collider.TryGetComponent<Base>(out Base _) == false)
+                    {
+                        Debug.Log(1);
+                        Point = _hit.point;
+                    }
+                }
+            }
         }
     }
 }

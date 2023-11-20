@@ -207,7 +207,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.1
+  m_fontSize: 17.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
-  - component: {fileID: 963194232}
+  - component: {fileID: 963194233}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -769,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431e0d806256f96488495308c9699ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &963194232
+--- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -778,12 +778,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dbc331814ce6da47bd25e4abd85ef48, type: 3}
+  m_Script: {fileID: 11500000, guid: 434a31ddae9d52546b90f96a5b956a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraRay: {fileID: 963194231}
-  _startFlag: {fileID: 1458755659}
-  _prefab: {fileID: -9203460817601410080, guid: 3d74f5cd3f0d70945b9b536f80c7935a, type: 3}
+  _spawner: {fileID: 1458755661}
+  _startUnits: 3
 --- !u!1 &1293343115
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,15 +938,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5230308d2e2fe4d409e70c5038bd7d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1458755659 stripped
+--- !u!114 &1458755661 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8552992999805877055, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6622974970205161415, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
   m_PrefabInstance: {fileID: 7461661699303908891}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7069f73403d5f344b5caf6dbba91cf9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ea9ef7aacaf7764da4ba59a7ae38a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1458755663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3494158069710018751, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+  m_PrefabInstance: {fileID: 7461661699303908891}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaeb995cde96d2c4a9016e3577f88aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1676372373
@@ -1346,10 +1356,42 @@ PrefabInstance:
       propertyPath: _startColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7794671762469005708, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _basePriceAchieved.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794671762469005708, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _basePriceAchieved.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794671762469005708, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _basePriceAchieved.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1458755663}
+    - target: {fileID: 7794671762469005708, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _basePriceAchieved.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794671762469005708, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _basePriceAchieved.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794671762469005708, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _basePriceAchieved.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.UnitParking, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794671762469005708, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _basePriceAchieved.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8552992999805877055, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
       propertyPath: _builder
       value: 
-      objectReference: {fileID: 963194232}
+      objectReference: {fileID: 8174481842394627953, guid: 3d74f5cd3f0d70945b9b536f80c7935a, type: 3}
+    - target: {fileID: 8552992999805877055, guid: 0d93a52fbcc3bfb4d916931d87c01bd6, type: 3}
+      propertyPath: _cameraRayPointer
+      value: 
+      objectReference: {fileID: 963194231}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
