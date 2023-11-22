@@ -23,10 +23,7 @@ namespace Assets.Scripts
                     CurrencyPoint = _hit.point;
 
                     if (_hit.collider.TryGetComponent<Base>(out Base _) == false)
-                    {
-                        Debug.Log(1);
                         Point = _hit.point;
-                    }
                 }
             }
         }

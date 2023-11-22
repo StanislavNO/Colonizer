@@ -41,20 +41,27 @@ namespace Assets.Scripts
                 if (transform.position == _startPosition)
                     _isWorking = false;
             }
-        }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.TryGetComponent(out Warehouse _))
+            if (IsWorking != false && transform.position != _startPosition && _targetResource == null)
             {
-                transform.position = _startPosition;
-                _isWorking = false;
+                Move(_startPosition);
             }
         }
 
+        //!! basa rigidbady
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if (other.TryGetComponent(out Warehouse _))
+        //    {
+        //        Debug.Log(1);
+        //        transform.position = _startPosition;
+        //        _isWorking = false;
+        //    }
+        //}
+
         public void GoHome(Vector3 homePosition)
         {
-            _isWorking = true;
+            //_isWorking = true;
             _startPosition = homePosition;
         }
 

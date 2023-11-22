@@ -8,7 +8,6 @@ namespace Assets.Scripts
     {
         public static UnityEvent PatternActivated = new();
 
-
         public static void UseEventPattern() => PatternActivated.Invoke();
     }
 }

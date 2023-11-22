@@ -28,10 +28,9 @@ namespace Assets.Scripts
                 {
                     AddResource(resource);
                     CollectResource(resource);
+                    TryBayPrice();
                 }
             }
-
-            TryBayPrice();
         }
 
         public void SaveUpForBase()

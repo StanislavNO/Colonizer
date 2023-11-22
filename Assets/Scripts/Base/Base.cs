@@ -16,6 +16,9 @@ namespace Assets.Scripts
 
         public int ResourcesFound => _resources.Count;
 
+        public void Init(Collector unit) =>
+            _unitParking.SetUnit(unit);
+
         private void FixedUpdate()
         {
             if (_resources.Count > 0 && _unitParking.ParkedUnits > 0)

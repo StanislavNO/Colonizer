@@ -6,13 +6,22 @@ namespace Assets.Scripts
     [RequireComponent(typeof(ColorChanger))]
     public class Pattern : MonoBehaviour
     {
-        [SerializeField] private Flag _flag;
-        [SerializeField] private BaseBuilder _baseBuilder;
+        [SerializeField] private Builder _baseBuilder;
+
+        private Flag _flag;
 
         public void Init(Flag flag)
         {
             _flag = flag;
-            _baseBuilder.Init(_flag.GetComponent<Base>(), _flag.GetComponent<Warehouse>(), _flag.GetComponent<UnitParking>());
+
+            _baseBuilder.Init(_flag.GetComponent<UnitParking>(),
+                _flag.GetComponent<Warehouse>(),
+                this);
+        }
+
+        private void Update()
+        {
+            Debug.Log(IsActivated);
         }
 
         public bool IsActivated { get; private set; }
@@ -20,7 +29,7 @@ namespace Assets.Scripts
         public void Activate()
         {
             IsActivated = true;
-            //_baseBuilder
+            _baseBuilder.Work();
         }
 
         public void DeActivate()

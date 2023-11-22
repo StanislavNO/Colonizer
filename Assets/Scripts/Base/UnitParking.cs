@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace Assets.Scripts
 {
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Collider),typeof(Flag))]
     public class UnitParking : MonoBehaviour
     {
         private List<Collector> _collectors = new();
@@ -69,16 +69,15 @@ namespace Assets.Scripts
 
         private IEnumerator UnitHom (Collector unit)
         {
+            WaitForSecondsRealtime delay = new(0.2f);
+
             do
             {
-                yield return new WaitForSecondsRealtime(0.2f);
-                Debug.Log(1);
+                yield return delay;
             }
             while (unit.IsWorking == true);
 
             unit.ChangeHomePosition(GetComponent<Flag>().GetPattern().transform.position);
-
-            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 namespace Assets.Scripts
 {
@@ -10,6 +11,7 @@ namespace Assets.Scripts
 
         private Pattern _pattern;
 
+        public Vector3 PatternPosition => _pattern.transform.position;
         public bool IsActivated { get; private set; }
 
         private void Awake()
@@ -25,12 +27,11 @@ namespace Assets.Scripts
 
         private void LateUpdate()
         {
-            Debug.Log(_cameraRayPointer.Point);
             if (IsActivated)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    if (_cameraRayPointer.CurrencyPoint == _cameraRayPointer.Point) 
+                    if (_cameraRayPointer.CurrencyPoint == _cameraRayPointer.Point)
                         _pattern.transform.position = _cameraRayPointer.Point;
 
                     _pattern.Activate();
@@ -40,9 +41,7 @@ namespace Assets.Scripts
         }
 
         public void OnPointerClick(PointerEventData eventData)
-        {
-            Activate();
-        }
+            => Activate();
 
         public void Activate() =>
             IsActivated = true;
