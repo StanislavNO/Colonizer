@@ -22,7 +22,6 @@ namespace Assets.Scripts
 
         public void SetTarget(Resource resource)
         {
-            //Debug.Log(0.2f);
             resource.ActivateResource();
 
             _mover.SetTarget(resource.transform);

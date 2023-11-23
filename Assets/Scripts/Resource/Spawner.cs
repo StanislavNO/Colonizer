@@ -6,7 +6,6 @@ namespace Assets.Scripts
 {
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private UnityEvent<Resource> _resourceCreated;
         [SerializeField] private List<Resource> _resources;
 
         public void CreatePrefab(Vector3 position)

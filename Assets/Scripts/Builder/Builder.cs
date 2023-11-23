@@ -1,24 +1,21 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
-    [RequireComponent(typeof(Pattern))]
+    [RequireComponent(typeof(BuildPointer))]
     public class Builder : MonoBehaviour
     {
         private UnitParking _unitParking;
         private Warehouse _warehouse;
-        private Pattern _pattern;
 
         private Vector3 _startPosition;
         private bool _isActivated;
         private bool _isWorking;
 
-        public void Init(UnitParking unitParking, Warehouse warehouse, Pattern pattern)
+        public void Init(UnitParking unitParking, Warehouse warehouse)
         {
             _unitParking = unitParking;
             _warehouse = warehouse;
-            _pattern = pattern;
         }
 
         private void Awake() =>

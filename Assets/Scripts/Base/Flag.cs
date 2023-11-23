@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
 
 namespace Assets.Scripts
 {
     public class Flag : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private Pattern _prefab;
+        [SerializeField] private BuildPointer _prefab;
         [SerializeField] private CameraRayPointer _cameraRayPointer;
 
-        private Pattern _pattern;
+        private BuildPointer _pattern;
 
         public Vector3 PatternPosition => _pattern.transform.position;
         public bool IsActivated { get; private set; }
@@ -49,7 +48,7 @@ namespace Assets.Scripts
         public void Deactivate() =>
             IsActivated = false;
 
-        public Pattern GetPattern() =>
+        public BuildPointer GetPattern() =>
             _pattern;
     }
 }

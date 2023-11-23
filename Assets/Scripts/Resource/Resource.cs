@@ -10,11 +10,8 @@ namespace Assets.Scripts
         private Rigidbody _rigidBody;
         private Renderer _renderer;
 
-        private bool _isAssembled = false;
-        private bool _isFound = false;
-
-        public bool IsAssembled => _isAssembled;
-        public bool IsFound => _isFound;
+        public bool IsAssembled { get; private set; }
+        public bool IsFound { get; private set; }
 
         private void Awake()
         {
@@ -23,10 +20,10 @@ namespace Assets.Scripts
         }
 
         public void CollectResource() =>
-            _isAssembled = true;
+            IsAssembled = true;
 
         public void ActivateResource() =>
-            _isFound = true;
+            IsFound = true;
 
         public void StopVelocity() =>
             _rigidBody.velocity = Vector3.zero;

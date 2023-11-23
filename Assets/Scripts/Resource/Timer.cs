@@ -17,7 +17,7 @@ namespace Assets.Scripts
 
         private IEnumerator CreateResource()
         {
-            WaitForSecondsRealtime delay = new WaitForSecondsRealtime(_delay);
+            WaitForSecondsRealtime delay = new(_delay);
 
             while (ResourceWorldCounter.Count < _maxResource)
             {

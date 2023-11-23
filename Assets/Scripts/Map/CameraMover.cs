@@ -16,14 +16,10 @@ public class CameraMover : MonoBehaviour
         _inputZ = Input.GetAxis(VerticalInput);
 
         if (_inputX != 0)
-        {
             Move(_inputX, Vector3.right);
-        }
 
         if (_inputZ != 0)
-        {
             Move(_inputZ, Vector3.forward);
-        }
     }
 
     private void Move(float input, Vector3 duration) =>

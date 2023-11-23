@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -11,11 +10,7 @@ namespace Assets.Scripts
         void Start()
         {
             for (int i = 0; i < _startUnits; i++)
-            {
                 _spawner.CreateUnit();
-            }
         }
-
-
     }
 }

@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
     [RequireComponent(typeof(ColorChanger))]
-    public class Pattern : MonoBehaviour
+    public class BuildPointer : MonoBehaviour
     {
         [SerializeField] private Builder _baseBuilder;
 
@@ -14,9 +13,9 @@ namespace Assets.Scripts
         {
             _flag = flag;
 
-            _baseBuilder.Init(_flag.GetComponent<UnitParking>(),
-                _flag.GetComponent<Warehouse>(),
-                this);
+            _baseBuilder.Init(
+                _flag.GetComponent<UnitParking>(),
+                _flag.GetComponent<Warehouse>());
         }
 
         public bool IsActivated { get; private set; }
@@ -30,6 +29,5 @@ namespace Assets.Scripts
         {
             IsActivated = false;
         }
-
     }
 }

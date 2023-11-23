@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Scripts
@@ -52,20 +50,8 @@ namespace Assets.Scripts
             IsStray = false;
         }
 
-        //!! basa rigidbady
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.TryGetComponent(out Warehouse _))
-        //    {
-        //        Debug.Log(1);
-        //        transform.position = _startPosition;
-        //        _isWorking = false;
-        //    }
-        //}
-
         public void GoHome(Vector3 homePosition)
         {
-            //_isWorking = true;
             _startPosition = homePosition;
         }
 

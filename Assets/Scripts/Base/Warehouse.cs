@@ -18,8 +18,6 @@ namespace Assets.Scripts
 
         public bool IsAccumulateBase { get; private set; }
 
-        public int Resource => _resources.Count;
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Resource resource))
