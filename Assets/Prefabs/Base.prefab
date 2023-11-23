@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5230308d2e2fe4d409e70c5038bd7d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scanner: {fileID: 6825935033247194439}
   _unitParking: {fileID: 3494158069710018751}
 --- !u!114 &6825935033247194439
 MonoBehaviour:
@@ -157,6 +156,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _basePriceAchieved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3494158069710018751}
+        m_TargetAssemblyTypeName: Assets.Scripts.UnitParking, Assembly-CSharp
+        m_MethodName: GoUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _storageBox: {fileID: 3519892945299035455}
 --- !u!114 &6622974970205161415
 MonoBehaviour:
@@ -172,7 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitParking: {fileID: 3494158069710018751}
   _prefab: {fileID: 9072273814499570354, guid: 4845bbf1dfcd1944c8ed621209ce7afb, type: 3}
-  _startNumber: 3
 --- !u!65 &4225903553493423605
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -206,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7069f73403d5f344b5caf6dbba91cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _builder: {fileID: 0}
   _prefab: {fileID: -9203460817601410080, guid: 3d74f5cd3f0d70945b9b536f80c7935a, type: 3}
+  _cameraRayPointer: {fileID: 0}
 --- !u!1 &6097982178093239925
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3519892945299035455}
+  - component: {fileID: 1075375209552927508}
   m_Layer: 0
   m_Name: Warehouse
   m_TagString: Untagged
@@ -239,6 +253,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5258060432134705248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075375209552927508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097982178093239925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713294a7483ced347a5ecdfdca522198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6775520973967469733
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,3 +363,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flag: {fileID: 8552992999805877055}
   _activeColor: {r: 0.88171196, g: 0, b: 1, a: 0}
+  _startColor: {r: 1, g: 0.2509804, b: 0.39607847, a: 0}

@@ -8,7 +8,7 @@ namespace Assets.Scripts
 {
     public class Base : MonoBehaviour
     {
-        [SerializeField] private Scanner _scanner;
+        private Scanner _scanner;
         [SerializeField] private UnitParking _unitParking;
 
         private List<Resource> _resources = new();
@@ -19,14 +19,24 @@ namespace Assets.Scripts
         public void Init(Collector unit) =>
             _unitParking.SetUnit(unit);
 
+        private void Awake()
+        {
+            _scanner = GetComponent<Scanner>();
+        }
+
         private void FixedUpdate()
         {
+            _resources = _scanner.ScanPositionResources();
+
+            Debug.Log(_resources.Count);
+            //StartCoroutine(ScanningMap());
+
             if (_resources.Count > 0 && _unitParking.ParkedUnits > 0)
                 StartCoroutine(EnableCollector());
         }
 
-        public void ScanningMap() =>
-            _resources = _scanner.ScanPositionResources();
+        //public void ScanningMap() =>
+        //    _resources = _scanner.ScanPositionResources();
 
         private bool TryGetInactiveResource(out Resource result)
         {
@@ -46,7 +56,6 @@ namespace Assets.Scripts
         private IEnumerator EnableCollector()
         {
             WaitForSecondsRealtime delay = new(_turnOnTime);
-
             if (TryGetInactiveResource(out Resource resource))
                 _unitParking.SendingUnit(resource);
 

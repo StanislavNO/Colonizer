@@ -12,14 +12,13 @@ namespace Assets.Scripts
 
         private Vector3 _startPosition;
         private bool _isActivated;
-        private bool _isBay;
+        private bool _isWorking;
 
         public void Init(UnitParking unitParking, Warehouse warehouse, Pattern pattern)
         {
             _unitParking = unitParking;
             _warehouse = warehouse;
             _pattern = pattern;
-            //StartCoroutine(CreateBase1());
         }
 
         private void Awake() =>
@@ -36,39 +35,41 @@ namespace Assets.Scripts
             if (_isActivated)
                 CreateBase();
             else
-                _isBay = false;
+                _isWorking = false;
         }
 
-        private void OnTrigerEnter(Collider collider)
+        private void OnTriggerEnter(Collider collider)
         {
-            if(collider.TryGetComponent<Collector>(out Collector unit))
+            Vector3 newPosition = new(
+                transform.position.x,
+                _unitParking.transform.position.y,
+                transform.position.z);
+
+            if (collider.TryGetComponent<Collector>(out Collector unit))
             {
-                if(unit.IsWorking == false)
+                if (unit.IsStray == true && _isActivated)
                 {
                     UnitParking newBase =
-                        Instantiate(_unitParking, transform.position, Quaternion.identity);
+                        Instantiate(_unitParking, newPosition, Quaternion.identity);
 
                     newBase.SetUnit(unit);
+                    unit.ChangeHomePosition(newBase.transform.position);
+                    Deactivate();
                 }
             }
         }
 
-        public void Work()
-        {
-
-        }
-
         private void Deactivate()
         {
-            transform.position = _startPosition;
             _isActivated = false;
+            transform.position = _startPosition;
         }
 
         private void CreateBase()
         {
-            if (_isBay == false)
+            if (_isWorking == false)
             {
-                _isBay = true;
+                _isWorking = true;
                 _warehouse.SaveUpForBase();
             }
         }

@@ -8,15 +8,13 @@ namespace Assets.Scripts
     public class TargetMover : MonoBehaviour
     {
         [SerializeField] private UnityEvent _targetAchieved;
-
         [SerializeField] private float _speed;
 
         private Transform _targetResource;
         private Vector3 _startPosition;
 
-        private bool _isWorking = false;
-
-        public bool IsWorking => _isWorking;
+        public bool IsWorking { get; private set; }
+        public bool IsStray { get; private set; }
 
         public void Init(Vector3 homePosition) =>
             _startPosition = homePosition;
@@ -34,18 +32,24 @@ namespace Assets.Scripts
                 }
             }
 
-            if (_targetResource == null && _isWorking == true)
+            if (_targetResource == null && IsWorking == true)
             {
                 Move(_startPosition);
 
                 if (transform.position == _startPosition)
-                    _isWorking = false;
+                    IsWorking = false;
             }
 
-            if (IsWorking != false && transform.position != _startPosition && _targetResource == null)
+            if (IsWorking == false && transform.position != _startPosition && _targetResource == null)
             {
+                IsStray = true;
                 Move(_startPosition);
             }
+        }
+
+        public void SetBase()
+        {
+            IsStray = false;
         }
 
         //!! basa rigidbady
@@ -67,7 +71,7 @@ namespace Assets.Scripts
 
         public void SetTarget(Transform resource)
         {
-            _isWorking = true;
+            IsWorking = true;
             _targetResource = resource;
         }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using Unity.VisualScripting;
 using System.Collections;
+using System.Security.Cryptography;
 
 namespace Assets.Scripts
 {
@@ -17,6 +18,7 @@ namespace Assets.Scripts
         public void SetUnit(Collector unit)
         {
             _collectors.Add(unit);
+            unit.SetBase();
         }
 
         public Collector GetUnit()
@@ -31,6 +33,7 @@ namespace Assets.Scripts
 
         public void SendingUnit(Resource resource)
         {
+            //Debug.Log("P1");
             foreach (var collector in _collectors)
             {
                 if (collector.IsWorking == false)
@@ -48,9 +51,7 @@ namespace Assets.Scripts
             foreach (Collector collector in _collectors)
             {
                 if (collector.IsWorking == false)
-                {
                     result++;
-                }
             }
 
             return result;
@@ -58,6 +59,7 @@ namespace Assets.Scripts
 
         public void GoUnit()
         {
+            //Debug.Log(1);
             int lastUnit = _collectors.Count - 1;
             Collector unit = _collectors[lastUnit];
 
@@ -76,8 +78,11 @@ namespace Assets.Scripts
                 yield return delay;
             }
             while (unit.IsWorking == true);
-
-            unit.ChangeHomePosition(GetComponent<Flag>().GetPattern().transform.position);
+            //Debug.Log(1);
+            unit.ChangeHomePosition(
+                GetComponent<Flag>()
+                .GetPattern()
+                .transform.position);
         }
     }
 }

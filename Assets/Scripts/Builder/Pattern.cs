@@ -19,17 +19,11 @@ namespace Assets.Scripts
                 this);
         }
 
-        private void Update()
-        {
-            Debug.Log(IsActivated);
-        }
-
         public bool IsActivated { get; private set; }
 
         public void Activate()
         {
             IsActivated = true;
-            _baseBuilder.Work();
         }
 
         public void DeActivate()

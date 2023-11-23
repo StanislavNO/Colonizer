@@ -8,7 +8,7 @@ namespace Assets.Scripts
     {
         [SerializeField] private UnityEvent _unitPriceAchieved;
         [SerializeField] private UnityEvent _basePriceAchieved;
-        [SerializeField] private Transform _storageBox;
+        [SerializeField] private StorageBox _storageBox;
 
         readonly private int _unitPrice = 3;
         readonly private int _basePrice = 5;
@@ -80,7 +80,7 @@ namespace Assets.Scripts
         {
             resource.CollectResource();
             resource.StopVelocity();
-            resource.transform.position = _storageBox.position;
+            resource.transform.position = _storageBox.transform.position;
         }
     }
 }

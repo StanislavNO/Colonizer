@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -10,11 +11,16 @@ namespace Assets.Scripts
 
         public int Resources => _resources.Count;
 
+        private void FixedUpdate()
+        {
+            StartCoroutine(Scanning());
+        }
+
         public List<Resource> ScanPositionResources() =>
             GetResourcesNotFound();
 
-        public void AddResource(Resource resource) =>
-            _resources.Add(resource);
+        //public void AddResource(Resource resource) =>
+        //    _resources.Add(resource);
 
         private List<Resource> GetResourcesNotFound()
         {
@@ -27,6 +33,22 @@ namespace Assets.Scripts
             }
 
             return resourcesNotFound;
+        }
+
+        private IEnumerator Scanning()
+        {
+            WaitForSecondsRealtime delay = new(0.4f);
+
+            yield return delay;
+
+            //Resource resource = ResourceLocator.TryGetResource();
+
+            //if (resource != null)
+            //{
+            //    Debug.Log(_resources.Count);
+            //    _resources.Add(resource);
+            //}
+            _resources = ResourceLocator.TryGetResource();
         }
     }
 }

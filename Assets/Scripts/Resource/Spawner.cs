@@ -16,7 +16,7 @@ namespace Assets.Scripts
                 position + Vector3.up,
                 Quaternion.identity);
 
-            _resourceCreated.Invoke(resource);
+            ResourceLocator.SetResource(resource);
             ResourceWorldCounter.AddResource();
         }
 
